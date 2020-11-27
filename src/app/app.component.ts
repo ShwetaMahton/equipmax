@@ -1,43 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogExampleComponent } from './dialog-example/dialog-example.component';
-import {FormBuilder, NgForm, Validators} from '@angular/forms';
-import { DataitempoolService } from './dataitempool.service';
-import { Dataitempool } from './dataitempool';
+import { WebRequestService } from './web-request.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
- 
- 
-dataitempool: Dataitempool[];
+export class AppComponent implements OnInit  {
+ constructor(public dialog: MatDialog, private service: WebRequestService) {}
 
-  constructor(public dialog: MatDialog , private _dataitempoolService: DataitempoolService) {}
-
-
-  openDialog() {
+openDialog() {
   this.dialog.open(DialogExampleComponent ,{height:'90%',width:'100%'});
   }
 
   ngOnInit() {
-    this._dataitempoolService.getDataitempool()
-    .subscribe((data: Dataitempool[]) => {
-     this.dataitempool= data;
-     console.log(this.dataitempool);
+    this.getDataFromApi();
+  }
 
-    });
-   
-    }
-
-  userForm: NgForm;
- selectedValue: string= 'others';
- 
-
- onSubmit() {
-   console.log(this.userForm.value);
- }
-
+  getDataFromApi(){
+    this.service.getData().subscribe((response) => {
+    console.log('Response from API is ', response)
+  } ,(error) => {
+    console.log('Error is' , error);
+  })
+}
 }

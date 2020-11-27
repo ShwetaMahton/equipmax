@@ -1,8 +1,76 @@
 
 <div class = "form-group">
     <select class = "custom-select">
-        <option selected>choose one</option>
+        <option selected disabled>choose one</option>
         <option *ngFor="let topic of topics">{{ topic }}</option>
     </select>
 </div>
-<button mat-raised-button-primary>Next</button>
+
+<h1>Checklist</h1>
+  <div class="row">
+
+    <div class="col-md-4">
+      <h4>List of Assets</h4>
+
+      <ul class="checkbox-items">
+        <li *ngFor="let item of checkboxesDataList">
+          <input type="checkbox" name="" id="" [(ngModel)]="item.isChecked" (change)="changeSelection()">{{item.label}}
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-md-4">
+      <h4>No of Selected Assets: {{selectedItemsList.length}} </h4>
+      <ul>
+        <li *ngFor="let item of selectedItemsList">{{item.label}}</li>
+      </ul>
+    </div>
+
+   
+
+  </div>
+
+
+<form #userForm = "ngForm" (ngSubmit)="onSubmit(userForm)">
+  <div class="form-group">
+    <label></label>
+    
+    <select class="form-control"  [(ngModel)]="selectedValue" name="poolfrequency" required>
+    
+      <option selected value = "Choose"disabled>choose duration for maintenance</option>
+      <option  value="Daily">Daily</option>
+      <option   value="Weekly">Weekly</option>
+      <option   value="Monthly">Monthly</option>
+      <option   value="others">Others- Please Specify Below</option>
+    </select>
+  </div>
+  <div  *ngIf="selectedValue == 'Daily'">
+    <label for="daily">Daily</label>
+    <input type="number" class="form-control" id="daily" name="daily" value = "1" readonly required>
+  </div>
+  <div  *ngIf="selectedValue == 'Weekly'">
+    <label for="weekly">Weekly</label>
+    <input type="number" class="form-control" id="weekly" name="weekly" value="7" readonly required>
+  </div>
+  <div  *ngIf="selectedValue == 'Monthly'">
+    <label for="monthly">Monthly</label>
+    <input type="number" class="form-control" id="monthly" name="monthly" value="30" readonly  required>
+  </div>
+  <div  *ngIf="selectedValue == 'others'">
+    <label for="name">No. of days</label>
+    <input type="number" class="form-control" id="name" ngModel name="other_poolfrequency" required>
+  </div>
+  
+  
+
+  <div class="form-group">
+  <label>No of times to be performed</label>
+    <div>              
+  <input type="number"  name= "no.of times" min="1" step="1" data-bind="value:noOfTimes" />
+  </div>
+  </div>
+  <button  [disabled]= "userForm.form.invalid" type="submit" class="btn btn-success">Submit</button>
+  </form>
+  
+  
+  

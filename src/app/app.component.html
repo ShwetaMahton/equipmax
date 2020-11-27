@@ -1,29 +1,5 @@
   <div class="p-5 bg-success">
 <button mat-raised-button (click) = "openDialog()" >open</button>
 </div>
-<form #userForm = "ngForm">
-<div class="form-group">
-  <label></label>
-  
-  <select class="form-control" value="others" [(ngModel)]="selectedValue" name="poolfrequency" required>
-   
-    <option  value="Daily">Daily</option>
-    <option   value="Weekly">Weekly</option>
-    <option   value="Monthly">Monthly</option>
-    <option   value="others">Others- Please Specify Below</option>
-  </select>
-</div>
-<div  *ngIf="selectedValue == 'others'">
-  <label for="name">No. of days</label>
-  <input type="number" class="form-control" id="name" ngModel name="other_poolfrequency" required>
-</div>
 
-<div class="form-group">
-<label>No of times to be performed</label>
-  <div>              
-<input type="number"  name= "no.of times" min="1" step="1" data-bind="value:noOfTimes" />
-</div>
-</div>
-</form>
-<button  [disabled]= "userForm.form.invalid" type="button" class="btn btn-success">Submit</button>
 

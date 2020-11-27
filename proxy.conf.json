@@ -1,0 +1,9 @@
+{
+    "/api/*" : {
+        "taget" : "http://localhost:3000",
+        "pathRewrite" : {
+            "^/api" : ""
+        }
+
+    }
+}
