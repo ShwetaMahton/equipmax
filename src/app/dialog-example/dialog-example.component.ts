@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, NgForm, Validators} from '@angular/forms';
 
-
 @Component({
   selector: 'app-dialog-example',
   templateUrl: './dialog-example.component.html',
@@ -9,9 +8,13 @@ import {FormBuilder, NgForm, Validators} from '@angular/forms';
 })
 export class DialogExampleComponent implements OnInit {
 
+   
   constructor() { }
 
+ 
+  
   topics = ['item1', 'item2', 'item3'];
+  
   
 // userForm: NgForm;
  selectedValue: string= 'Choose';
@@ -61,7 +64,9 @@ export class DialogExampleComponent implements OnInit {
  ngOnInit(): void {
    this.fetchSelectedItems()
    this.fetchCheckedIDs()
+  
  }
+ 
 
  changeSelection() {
    this.fetchSelectedItems()

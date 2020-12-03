@@ -1,0 +1,33 @@
+<h1>Checklist creation</h1>
+
+<form #usermodel = "ngForm" (ngSubmit) = "additem(usermodel)">
+  
+
+<div class = "form" >
+    
+      <div class="form-group">
+        <label for="checklistField">CheckList Field:</label>
+        <input type="text" class="form-control" name="checklistField" [(ngModel)]= "home.checklistField" >
+      </div>
+      <div class="form-group">
+        <label for="checklistDatatype">CheckList DataType:</label>
+        <input type="number" class="form-control" name="checklistDataType"[(ngModel)]= "home.checklistDataType" >
+      </div>
+      <div class="checkbox">
+        <label><input type="checkbox" name = "isActive" [(ngModel)]= "home.isActive"> Is Active</label>
+      </div>
+      <div class="checkbox">
+        <label><input type="checkbox" name = "ismandatory"[(ngModel)]= "home.ismandatory"> is Mandatory</label>
+      </div>
+      <div class="form-group">
+        <button type="button" class="btn btn-danger">Delete</button>
+      </div>
+        
+       <div class="form-group">
+          <button type="submit" class="btn btn-success">Add item</button>
+        
+        </div>
+     
+    
+  </div>
+  </form>

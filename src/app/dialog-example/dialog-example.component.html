@@ -1,6 +1,6 @@
-
+<form #userForm = "ngForm" (ngSubmit)="onSubmit(userForm)">
 <div class = "form-group">
-    <select class = "custom-select">
+    <select class = "custom-select" name = "assets"  required>
         <option selected disabled>choose one</option>
         <option *ngFor="let topic of topics">{{ topic }}</option>
     </select>
@@ -14,7 +14,7 @@
 
       <ul class="checkbox-items">
         <li *ngFor="let item of checkboxesDataList">
-          <input type="checkbox" name="" id="" [(ngModel)]="item.isChecked" (change)="changeSelection()">{{item.label}}
+          <input type="checkbox" name="multipleAsset" id="" [(ngModel)]="item.isChecked" (change)="changeSelection()">{{item.label}}
         </li>
       </ul>
     </div>
@@ -25,13 +25,7 @@
         <li *ngFor="let item of selectedItemsList">{{item.label}}</li>
       </ul>
     </div>
-
-   
-
-  </div>
-
-
-<form #userForm = "ngForm" (ngSubmit)="onSubmit(userForm)">
+ </div>
   <div class="form-group">
     <label></label>
     
@@ -61,15 +55,14 @@
     <input type="number" class="form-control" id="name" ngModel name="other_poolfrequency" required>
   </div>
   
-  
-
   <div class="form-group">
   <label>No of times to be performed</label>
     <div>              
-  <input type="number"  name= "no.of times" min="1" step="1" data-bind="value:noOfTimes" />
+  <input type="number"  name= "nooftimes" min="1" step="1" data-bind="value:noOfTimes" />
   </div>
   </div>
-  <button  [disabled]= "userForm.form.invalid" type="submit" class="btn btn-success">Submit</button>
+
+  <button  [disabled]= "userForm.form.invalid" type="submit" class="btn btn-primary">  Submit  </button>
   </form>
   
   

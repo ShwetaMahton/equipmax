@@ -15,6 +15,8 @@ openDialog() {
   this.dialog.open(DialogExampleComponent ,{height:'90%',width:'100%'});
   }
 
+ 
+
   ngOnInit() {
     this.getDataFromApi();
   }
@@ -24,6 +26,9 @@ openDialog() {
     console.log('Response from API is ', response)
   } ,(error) => {
     console.log('Error is' , error);
+  })
+  this.service.create({id:1}).subscribe((r)=>{
+    console.log(r);
   })
 }
 }
