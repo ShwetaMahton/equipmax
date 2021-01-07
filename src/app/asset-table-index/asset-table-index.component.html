@@ -1,0 +1,26 @@
+<p>table-index works!</p>
+<div class="container">
+    
+    <table class="table">
+      <thead>
+        <tr >
+          
+          <th>poolItemKeyPK</th>
+          <th>Assetid</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor  ="let id of data">
+          
+          <td>{{id.poolItemKeyPK}}</td>
+          <td>{{id.poolAssetID}}</td>
+          <td><button mat-raised-button color="warn" (click)="deleteData(id.poolItemKeyPK)">Delete</button> </td>
+          <td><button mat-raised-button color="accent" (click)="edit(id.i, id.poolItemKeyPK)">Edit</button> </td>
+        </tr>
+        
+        
+      </tbody>
+    </table>
+  </div>
+  

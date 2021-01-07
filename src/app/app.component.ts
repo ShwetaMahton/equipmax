@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogExampleComponent } from './dialog-example/dialog-example.component';
 import { WebRequestService } from './web-request.service';
+import { DialogOverviewExampleDialogComponent} from './dialog-overview-example-dialog/dialog-overview-example-dialog.component';
+import {MatTableModule} from '@angular/material/table';
 
 @Component({
   selector: 'app-root',
@@ -15,9 +17,7 @@ openDialog() {
   this.dialog.open(DialogExampleComponent ,{height:'90%',width:'100%'});
   }
 
- 
-
-  ngOnInit() {
+   ngOnInit() {
     this.getDataFromApi();
   }
 

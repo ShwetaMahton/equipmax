@@ -1,0 +1,49 @@
+
+<div *ngIf="assetDetails !== null" >
+  
+  <div *ngFor="let asset of assetDetails;">
+    <div class="card">
+      <h1>
+        <header class="card_color">
+          <div item-content style="display: flex; justify-content: space-between; width: 100%">
+            <label><h4 class="chkList">AssetID</h4></label>
+            <label><h4 class="chkList">{{asset.assetid}}</h4></label>
+          </div>
+          <div item-content style="display: flex; justify-content: space-between; width: 100%">
+            <label><h4 class="chkList">Asset Type</h4></label>
+            <label><h4 class="chkList">{{asset.itemTypeName}}</h4></label>
+          </div>
+          <div item-content style="display: flex; justify-content: space-between; width: 100%">
+            <label><h4 class="chkList">Last Checklist Creation</h4></label>
+            <label *ngIf='asset.LastChecklistCreationDateTime !== "" '><h4 class="chkListDate">{{asset.LastChecklistCreationDateTime}}</h4></label>
+            <label *ngIf='asset.LastChecklistCreationDateTime == "" '><h4 class="chkListDate">No Last Operation</h4></label>
+          </div>
+        </header>
+      </h1>
+    </div>
+  </div>
+  
+  
+  <header>
+    <span>Fill Checklist Field Value</span>
+  </header>
+  <ng-container *ngFor="let field of assetChecklistFields; index as i">
+    <div style="margin-bottom: 2em;" *ngIf="field.dataTypeId !== 1">
+      <input type="text" placeholder="{{field.checklistField}}" [(ngModel)]="field.fieldValue" required><span style="color:red;"></span>
+    </div>
+
+    <!-- 1 == DatePicker -->
+    <div style="margin-bottom: 2em;" *ngIf="field.dataTypeId == 1">
+      <input type="text" placeholder="{{field.checklistField}}" [(ngModel)]="field.fieldValue" value="{{field.fieldValue}}"  required (click)="calendarCheckFields(field)"><span style="color:red;"></span>
+    </div>
+  </ng-container>
+
+  <ng-container>
+    <div style="margin-bottom: 2em;">
+        <input placeholder="service Done Date" [(ngModel)]="serviceDoneDate" value="{{serviceDoneDate}}"  required (click)="calendarServiceDoneDate()"><span style="color:red;"></span>
+    </div>
+  </ng-container>
+  <div class="text">
+    <button class="primary" (click)="Submit()">Submit</button>
+  </div>
+</div>

@@ -4,6 +4,10 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class TaskService {
-
-  constructor() { }
+  checklistlogPK : 'number';
+  dataitempoolPK : 'number';
+  serviceDoneDate : 'string'; 
+  checklistoperationDate : 'string';
+  upcomingCheckDate : 'string';
+  
 }

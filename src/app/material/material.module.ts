@@ -11,6 +11,9 @@ import {MatInputModule} from '@angular/material/input';
 import {MatListModule} from '@angular/material/list';
 
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatTableModule} from '@angular/material/table';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 
@@ -23,7 +26,10 @@ const material = [
   MatSelectModule,
   MatInputModule,
   MatListModule,
-  MatFormFieldModule
+  MatFormFieldModule, 
+  MatTableModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 ];
 
 

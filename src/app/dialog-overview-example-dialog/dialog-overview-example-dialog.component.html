@@ -1,0 +1,13 @@
+
+   <div class="col-md-4">
+    <h4>Assign Checklist</h4>
+
+    <ol class="checkbox-items">
+      <li *ngFor="let topping of toppingList">
+        <input type="checkbox" name="" value="topping.checklistPK" >{{topping.checklistField}}
+      </li>
+    </ol>
+    <div mat-dialog-actions>
+    <button mat-dialog-close ="topping.checklistField" cdkFocusInitial>Ok</button>
+    </div>  
+  </div>

@@ -1,30 +1,9 @@
 <form #userForm = "ngForm" (ngSubmit)="onSubmit(userForm)">
-<div class = "form-group">
-    <select class = "custom-select" name = "assets"  required>
-        <option selected disabled>choose one</option>
-        <option *ngFor="let topic of topics">{{ topic }}</option>
-    </select>
-</div>
+
 
 <h1>Checklist</h1>
   <div class="row">
-
-    <div class="col-md-4">
-      <h4>List of Assets</h4>
-
-      <ul class="checkbox-items">
-        <li *ngFor="let item of checkboxesDataList">
-          <input type="checkbox" name="multipleAsset" id="" [(ngModel)]="item.isChecked" (change)="changeSelection()">{{item.label}}
-        </li>
-      </ul>
-    </div>
-
-    <div class="col-md-4">
-      <h4>No of Selected Assets: {{selectedItemsList.length}} </h4>
-      <ul>
-        <li *ngFor="let item of selectedItemsList">{{item.label}}</li>
-      </ul>
-    </div>
+  
  </div>
   <div class="form-group">
     <label></label>
@@ -61,6 +40,12 @@
   <input type="number"  name= "nooftimes" min="1" step="1" data-bind="value:noOfTimes" />
   </div>
   </div>
+  
+  <button mat-button (click)="openDialogg()">Open dialog</button>
+  
+  
+
+
 
   <button  [disabled]= "userForm.form.invalid" type="submit" class="btn btn-primary">  Submit  </button>
   </form>
