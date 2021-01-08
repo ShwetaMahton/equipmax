@@ -34,12 +34,12 @@
     <!-- Get Details -->
     <ng-container matColumnDef="getdetails">
       <th mat-header-cell *matHeaderCellDef>  </th>
-      <td mat-cell *matCellDef="let id"> <button mat-raised-button color="primary" (click)="getRecord(id.poolItemKeyPK)">Get Details</button> </td>
+      <td mat-cell *matCellDef="let id"> <button mat-raised-button color="primary" (click)="getRecord(id.poolItemKeyPK);webservice.poolAssetID=id.poolAssetID">Get Details</button> </td>
     </ng-container>
      <!-- create -->
     <ng-container matColumnDef="Create">
       <th mat-header-cell *matHeaderCellDef>  </th>
-      <td mat-cell *matCellDef="let id"> <button mat-stroked-button color="accent" (click)="open()" >Create</button></td>
+      <td mat-cell *matCellDef="let id"> <button mat-stroked-button color="accent" (click)="open(id.poolItemKeyPK);webservice.poolAssetID=id.poolAssetID " >Create</button></td>
     </ng-container>
  <!-- view details -->
     <ng-container matColumnDef="viewdetails">

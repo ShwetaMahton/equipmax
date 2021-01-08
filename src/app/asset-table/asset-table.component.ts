@@ -30,8 +30,9 @@ export class AssetTableComponent implements OnInit {
   
 
   constructor(private _router: Router, private webservice: WebRequestService, public dialog: MatDialog) { }
-  open() {
+  open(index : number) {
     const dialogRef = this.dialog.open(DialogAssetTableComponent ,{height:'80%',width:'70%'});
+    this._router.navigate(['/asset-table',index]);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
@@ -51,6 +52,8 @@ export class AssetTableComponent implements OnInit {
   {
     this._router.navigate(['/asset-table',index]);
    }
+   
+  
 }
   
 

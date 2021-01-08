@@ -14,6 +14,8 @@ export class WebRequestService {
   constructor(private http: HttpClient) {}
   sendData: any;
 
+  public poolAssetID:number;
+
   getchecklist() {
       return this.http.get(environment.url+'/checklist')
   }
@@ -40,6 +42,9 @@ export class WebRequestService {
 
   getRecord() {
     return this.http.get(environment.url + '/asset-table-index')
+  }
+  open() {
+    return this.http.get(environment.url + '/dialog-asset-table')
   }
 
 handleError<T>(operation = 'operation', result?: T) {
@@ -94,24 +99,24 @@ handleError<T>(operation = 'operation', result?: T) {
       )
     );
   }
-  savechecklistCreationLogNDataValue(data): any {
-    const headers = new HttpHeaders();
-    headers.append('Access-Control-Allow-Origin', '*');
-    headers.append('Access-Control-Allow-Methods', 'POST,GET,OPTIONS,PUT');
-    headers.append('Accept', 'application/json');
-    headers.append('content-type', 'application/json');
+  // savechecklistCreationLogNDataValue(data): any {
+  //   const headers = new HttpHeaders();
+  //   headers.append('Access-Control-Allow-Origin', '*');
+  //   headers.append('Access-Control-Allow-Methods', 'POST,GET,OPTIONS,PUT');
+  //   headers.append('Accept', 'application/json');
+  //   headers.append('content-type', 'application/json');
 
-    const url = environment.url + '/savechecklistCreationLogNDataValue';
-    console.log('url', url);
+  //   const url = environment.url + '/savechecklistCreationLogNDataValue';
+  //   console.log('url', url);
 
-    return this.http.post(url, data, { headers })
-    .pipe(
-      tap((_) => console.log('saved successfully')),
-      catchError(
-        this.handleError<any>('save checklistCreation Log', [])
-      )
-    );
-  }
+  //   return this.http.post(url, data, { headers })
+  //   .pipe(
+  //     tap((_) => console.log('saved successfully')),
+  //     catchError(
+  //       this.handleError<any>('save checklistCreation Log', [])
+  //     )
+  //   );
+  // }
 
   fetchExistingCheckListFieldsForSelectedAsset(data): any {
     const headers = new HttpHeaders();
@@ -131,7 +136,10 @@ handleError<T>(operation = 'operation', result?: T) {
       )
     );
   }
-
+saveDataDialog(serviceDoneDate,localISOTime,localTime){
+console.log(serviceDoneDate,localISOTime,localTime);
+console.log(this.poolAssetID);
+}
   fetchChecklistLogDetails(data): any {
     const headers = new HttpHeaders();
     headers.append('Access-Control-Allow-Origin', '*');

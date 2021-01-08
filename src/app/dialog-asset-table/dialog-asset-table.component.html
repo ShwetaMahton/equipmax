@@ -1,4 +1,19 @@
+<form #usermodel = "ngForm" >
+<div class="col-md-4">
+  <h4>Assign Checklist</h4>
 
+  <ol>
+    <!-- <li  *ngFor="let topping of toppingList">
+     
+    </li> -->
+    <input type="text"    name="checklistField"   >{{temp}}
+    <input type="text"    name="checklistField">{{humidity}}
+  </ol>
+  
+    
+</div>
+
+<!--
 <div *ngIf="assetDetails !== null" >
   
   <div *ngFor="let asset of assetDetails;">
@@ -32,18 +47,56 @@
       <input type="text" placeholder="{{field.checklistField}}" [(ngModel)]="field.fieldValue" required><span style="color:red;"></span>
     </div>
 
-    <!-- 1 == DatePicker -->
+    <!-- 1 == DatePicker 
     <div style="margin-bottom: 2em;" *ngIf="field.dataTypeId == 1">
       <input type="text" placeholder="{{field.checklistField}}" [(ngModel)]="field.fieldValue" value="{{field.fieldValue}}"  required (click)="calendarCheckFields(field)"><span style="color:red;"></span>
     </div>
   </ng-container>
-
+  -->
+<!--
   <ng-container>
     <div style="margin-bottom: 2em;">
         <input placeholder="service Done Date" [(ngModel)]="serviceDoneDate" value="{{serviceDoneDate}}"  required (click)="calendarServiceDoneDate()"><span style="color:red;"></span>
     </div>
-  </ng-container>
-  <div class="text">
-    <button class="primary" (click)="Submit()">Submit</button>
-  </div>
+  </ng-container> 
+  
+-->
+<div class="text">
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker" name="service Done Date" [(ngModel)]="serviceDoneDate"  />
+    <mat-datepicker-toggle matSuffix [for]="picker">
+      <mat-icon matDatepickerToggleIcon></mat-icon>
+    </mat-datepicker-toggle>
+    <mat-datepicker #picker>select</mat-datepicker>
+  </mat-form-field>
 </div>
+<div class="text"  *ngFor  ="let id of data">
+  {{id.poolItemKeyPK}}  
+
+  <!-- <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>checklist Operation date</mat-label>
+    <input matInput [matDatepicker]="picker" name="service Done Date" [(ngModel)]="serviceDoneDate"  />
+    <mat-datepicker-toggle matSuffix [for]="picker">
+      <mat-icon matDatepickerToggleIcon></mat-icon>
+    </mat-datepicker-toggle>
+    <mat-datepicker #picker>select</mat-datepicker>
+  </mat-form-field> -->
+</div>
+<div class="text">
+
+  <!-- <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>upcoming checklist date</mat-label>
+    <input matInput [matDatepicker]="picker" name="service Done Date" [(ngModel)]="serviceDoneDate"  />
+    <mat-datepicker-toggle matSuffix [for]="picker">
+      <mat-icon matDatepickerToggleIcon></mat-icon>
+    </mat-datepicker-toggle>
+    <mat-datepicker #picker>select</mat-datepicker>
+  </mat-form-field> -->
+</div>
+<div class="form-group">
+  <button type="submit"  (click)="Submit()"  class="btn btn-success">SUBMIT</button>
+
+</div>
+</form>
