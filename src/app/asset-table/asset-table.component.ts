@@ -31,6 +31,8 @@ export class AssetTableComponent implements OnInit {
 
   constructor(private _router: Router, private webservice: WebRequestService, public dialog: MatDialog) { }
   open(index : number) {
+    console.log("index", index);
+    this.webservice.poolAssetID=index;
     const dialogRef = this.dialog.open(DialogAssetTableComponent ,{height:'80%',width:'70%'});
     this._router.navigate(['/asset-table',index]);
 
@@ -38,6 +40,12 @@ export class AssetTableComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
       
     });
+  }
+  log(index : number) {
+    console.log("index", index);
+    this.webservice.poolAssetID=index;
+    this._router.navigate(['/checklist']);
+
   }
   ngOnInit(): void {
     this.webservice.getassetid().subscribe(data =>{

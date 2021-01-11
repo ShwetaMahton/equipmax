@@ -19,6 +19,8 @@ export class WebRequestService {
   getchecklist() {
       return this.http.get(environment.url+'/checklist')
   }
+
+
   getOne(id) {
     return this.http.get('http://localhost:3000/assetid/'+id)
  }
@@ -136,9 +138,19 @@ handleError<T>(operation = 'operation', result?: T) {
       )
     );
   }
+  getchecklistlog()  {
+    console.log(this.poolAssetID);
+    var poolAssetID= this.poolAssetID;
+   return this.http.post('http://localhost:3000/getlog', {poolAssetID});
+
+  }
 saveDataDialog(serviceDoneDate,localISOTime,localTime){
 console.log(serviceDoneDate,localISOTime,localTime);
-console.log(this.poolAssetID);
+console.log("poolid",this.poolAssetID);
+this.http.post('http://localhost:3000/savedata', {serviceDoneDate:serviceDoneDate,localISOTime:localISOTime,localTime:localTime,poolid:this.poolAssetID})
+      .subscribe((ResData) => {
+        console.log(ResData);
+      });
 }
   fetchChecklistLogDetails(data): any {
     const headers = new HttpHeaders();

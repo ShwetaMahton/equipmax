@@ -17,6 +17,7 @@ import { AssetTableComponent } from '../asset-table/asset-table.component';
 })
 export class DialogAssetTableComponent implements OnInit {
   toppings = new FormControl();
+  
   toppingList: string[] 
   assetKey: number;
   assetDetails;
@@ -51,9 +52,24 @@ export class DialogAssetTableComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log(this._router.snapshot.params)
-  this.id = this._router.snapshot.params.id
-  this.getOne();
+    this.route.queryParams.subscribe( params => {
+      console.log(params);
+
+    });
+this.assetChecklistFields = [];
+this.webservice.fetchExistingCheckListFieldsForSelectedAsset(3).subscribe(value => {
+  console.log("value",value);
+  this.assetChecklistFields = value;
+
+  for(let obj of this.assetChecklistFields) {
+    obj.fieldValue = '';
+  }
+  console.log('assetChecklistFields', this.assetChecklistFields);
+});
+    console.log(this._router.snapshot.params);
+  this.id = this._router.snapshot.params.id;
+  console.log("this.id",this.id);
+  //this.getOne();
     this.webservice.getchecklist().subscribe(data =>{
       console.log(data)
       this.temp=data[0].checklistField;
@@ -103,31 +119,18 @@ export class DialogAssetTableComponent implements OnInit {
        })
    }
 
-   ionViewWillEnter() {
+   ViewWillEnter() {
 
    let assetKeyObj = {
     assetKey: JSON.stringify(this.assetKey)
   };
-
- 
-  
-
-  this.webservice.fetchChecklistLogDetails(assetKeyObj).subscribe(value => {
+ this.webservice.fetchChecklistLogDetails(assetKeyObj).subscribe(value => {
     // console.log(value);
     this.checklistLogDetails = value;
     console.log('checklistLogDetails', this.checklistLogDetails);
   });
 
-  this.assetChecklistFields = [];
-this.webservice.fetchExistingCheckListFieldsForSelectedAsset(assetKeyObj).subscribe(value => {
-  console.log("value",value);
-  this.assetChecklistFields = value;
-
-  for(let obj of this.assetChecklistFields) {
-    obj.fieldValue = '';
-  }
-  console.log('assetChecklistFields', this.assetChecklistFields);
-});
+  
 
 }
 Submit() {

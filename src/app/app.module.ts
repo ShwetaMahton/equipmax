@@ -13,6 +13,7 @@ import { AssetTableComponent } from './asset-table/asset-table.component';
 import { ChecklistpoolComponent } from './checklistpool/checklistpool.component';
 import { AssetTableIndexComponent } from './asset-table-index/asset-table-index.component';
 import { DialogAssetTableComponent } from './dialog-asset-table/dialog-asset-table.component';
+import { ChecklistLogTableComponent } from './checklist-log-table/checklist-log-table.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { DialogAssetTableComponent } from './dialog-asset-table/dialog-asset-tab
     AssetTableComponent,
     ChecklistpoolComponent,
     AssetTableIndexComponent,
-    DialogAssetTableComponent
+    DialogAssetTableComponent,
+    ChecklistLogTableComponent
    
   ],
   entryComponents: [DialogExampleComponent],

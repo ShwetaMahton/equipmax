@@ -21,6 +21,7 @@ export class AssetTableIndexComponent implements OnInit {
   ngOnInit(): void {
    console.log(this._router.snapshot.params)
    this.id = this._router.snapshot.params.id
+   console.log("id" , this.id);
    this.getOne();
     
   }

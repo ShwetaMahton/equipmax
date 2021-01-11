@@ -39,12 +39,12 @@
      <!-- create -->
     <ng-container matColumnDef="Create">
       <th mat-header-cell *matHeaderCellDef>  </th>
-      <td mat-cell *matCellDef="let id"> <button mat-stroked-button color="accent" (click)="open(id.poolItemKeyPK);webservice.poolAssetID=id.poolAssetID " >Create</button></td>
+      <td mat-cell *matCellDef="let id"> <button mat-stroked-button color="accent" (click)="open(id.poolItemKeyPK);" >Create</button></td>
     </ng-container>
  <!-- view details -->
     <ng-container matColumnDef="viewdetails">
       <th mat-header-cell *matHeaderCellDef>  </th>
-      <td mat-cell *matCellDef> <button mat-stroked-button color="primary">View details</button> </td>
+      <td mat-cell *matCellDef="let id"> <button mat-stroked-button color="primary" (click)="log(id.poolItemKeyPK);" >View details</button> </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
